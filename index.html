@@ -1,106 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge" >
+        <title>WebApp</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>WebApp</title>
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
 
-	<link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-	<header>
-		<div class="layout-wrap">
-			<a href="#"><img src="img/logo-netcraft.svg" alt="netcraft"></a>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-			<form class="search-box">
-				<input type="search" name="q" placeholder="search">
-			</form>
-		</div>
-	</header>
+        <header>
+            <div class="layout-wrap">
+                <a href="#"><img src="img/logo-netcraft.svg" alt="netcraft"></a>
 
-	<section class="page-body layout-wrap">
-		<div class="notifications"></div>
+                <form class="search-box">
+                    <input type="search" name="q" placeholder="search">
+                </form>
+            </div>
+        </header>
 
-		<nav>
-			<div class="nav-section">
-				<p>Select Reporting Platform</p>
+        <section class="page-body layout-wrap">
+            <div class="notifications"></div>
 
-				<div class="menu">
-					<div class="menu-caption">
-						<p>Choose QS report</p>
-					</div>
+            <nav class="top-nav clearfix">
+                <div class="nav-section nav-section-reporting">
+                    <p>Select Reporting Platform</p>
 
-					<ul class="action-list">
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-					</ul>
-				</div>
-			</div>
+                    <div class="menu">
+                        <div class="menu-caption">
+                            <p>Choose QS report</p>
+                            <div class="arrow"><img src="img/arrow.png" alt="guiding arrow"></div>
+                        </div>
 
-			<div class="nav-section">
-				<p>Select Dashboard</p>
+                        <ul class="action-list">
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-				<div class="menu">
-					<div class="menu-caption">
-						<p>Choose dashboard</p>
-					</div>
+                <div class="nav-section">
+                    <p>Select Dashboard</p>
 
-					<ul class="action-list">
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-					</ul>
-				</div>
-			</div>
+                    <div class="menu">
+                        <div class="menu-caption">
+                            <p>Choose dashboard</p>
+                        </div>
 
-			<div class="nav-section">
-				<p>Help &amp; Tutorials</p>
+                        <ul class="action-list">
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-				<div class="menu">
-					<div class="menu-caption">
-						<p>Choose guide</p>
-					</div>
+                <div class="nav-section">
+                    <p>Help &amp; Tutorials</p>
 
-					<ul class="action-list">
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-						<li><a href="#">link</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+                    <div class="menu">
+                        <div class="menu-caption">
+                            <p>Choose guide</p>
+                        </div>
 
-		<section class="tabs">
-			<ul>
-				<li><a href="#quick-reports">Quick Reports</a></li>
-				<li><a href="#my-folders">My Folders</a></li>
-				<li><a href="#my-team-folders">My Team Folders</a></li>
-				<li><a href="#public-folders">Public Folders</a></li>
-			</ul>
+                        <ul class="action-list">
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
-			<div id="quick-reports">
-			</div>
+            <section class="tabs clearfix">
+                <ul>
+                    <li><a href="#quick-reports">Quick Reports</a></li>
+                    <li><a href="#my-folders">My Folders</a></li>
+                    <li><a href="#my-team-folders">My Team Folders</a></li>
+                    <li><a href="#public-folders">Public Folders</a></li>
+                </ul>
 
-			<div id="my-folders">
-			</div>
+                <div id="quick-reports" class="tab">
+                </div>
 
-			<div id="my-team-folders">
-			</div>
+                <div id="my-folders" class="tab">
+                </div>
 
-			<div id="public-folders">
-			</div>
-		</section>
-	</section>
+                <div id="my-team-folders" class="tab">
+                </div>
 
-	<script src="js/main.js"></script>
-</body>
+                <div id="public-folders" class="tab">
+                </div>
+            </section>
+        </section>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function (b, o, i, l, e, r) {
+                b.GoogleAnalyticsObject = l;
+                b[l] || (b[l] =
+                        function () {
+                            (b[l].q = b[l].q || []).push(arguments)
+                        });
+                b[l].l = +new Date;
+                e = o.createElement(i);
+                r = o.getElementsByTagName(i)[0];
+                e.src = 'https://www.google-analytics.com/analytics.js';
+                r.parentNode.insertBefore(e, r)
+            }(window, document, 'script', 'ga'));
+            ga('create', 'UA-XXXXX-X', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
 </html>
+

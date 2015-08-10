@@ -1,0 +1,144 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 10, 2015, 10:11:38 PM
+    Author     : WAT
+*/
+
+body {
+    background-color: hotpink;
+}
+
+header {
+    background-color: black;
+    height: 100px;  
+    line-height: 100px;
+}
+
+.layout-wrap {
+    width: 100%;
+    max-width: 1079px;
+    position: relative;
+    margin: 0 auto; 
+}
+
+
+.search-box {
+    float:right;
+}
+
+.notifications {
+    position: absolute;
+    top: 80px;
+    display: none;
+    height: 60px;
+    line-height: 40px;
+    width: 100%;
+    background: lightgrey;
+    padding: 0px 20px;
+    border: 20px solid #666666;
+    border-bottom: 0;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.top-nav {
+    margin-top:20px;
+}
+
+.nav-section {
+    display: inline-block;
+    position: relative;
+    height: 160px;
+    width: 31%;
+    background: black;
+    vertical-align: top;
+    background-size: 117px 117px;
+    background-position: 50% 200%;
+    background-repeat: no-repeat;
+    margin-right: 3%;
+}
+
+.top-nav .nav-section:last-child {
+    margin-right: 0px;
+}
+
+.menu {
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    background: #dedede;
+    font-size: 0.8rem;
+    padding: 0 20px;
+}
+.menu-caption {
+    display: inline-block;
+    height: inherit;
+    line-height: 0.7;
+}
+.nav-section p {
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.nav-section.nav-section-reporting {
+    background-image: url(/img/icons/action-report-new.png);
+}
+nav li {
+    float: left;
+    width: 31%;
+    margin-left: 3.5%;
+    height: 200px;
+    background-color: red;  
+}
+
+main {
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: #666;
+    padding: 40px 20px 20px;
+}
+
+.tabs {
+    margin-top: 40px;
+}
+
+.tabs li {
+    float: left;
+    width: 22%;
+    margin-left: 4%;
+    height: 50px;
+    background-color: white;
+}
+
+.tabs li.active {
+    background-color: hotpink;
+}
+
+nav li:first-child,
+.tabs li:first-child {
+    margin-left: 0;
+}
+
+.tab {
+    display: none;
+    background-color: white;
+    height: 500px;
+}
+
+.tab.active {
+    display: block;
+}
+
+.clearfix {
+    overflow: hidden;
+}
+
