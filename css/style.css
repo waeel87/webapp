@@ -126,15 +126,15 @@ header {
 }
 
 .nav-section.nav-section-reporting {
-    background-image: url(/img/icons/action-report-new.png);
+    background-image: url(../img/icons/action-report-new.png);
 }
 
 .nav-section.nav-section-dashboard {
-    background-image: url(/img/icons/action-report-top.png);
+    background-image: url(../img/icons/action-report-top.png);
 }
 
 .nav-section.nav-section-tutorials {
-    background-image: url(/img/icons/actions-help.png);
+    background-image: url(../img/icons/actions-help.png);
 }
 
 
