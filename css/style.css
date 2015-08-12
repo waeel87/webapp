@@ -53,7 +53,8 @@ header {
     background-size: 117px 117px;
     background-position: 50% 180%;
     background-repeat: no-repeat;
-    margin-right: 2.5%;
+    margin-right: 3%;
+    cursor: pointer;
 }
 
 .top-nav .nav-section:last-child {
@@ -61,17 +62,42 @@ header {
 }
 
 .action-list {
-    visibility: hidden;
-    height: 0px;
-    max-height: 0px;
+    display: none;
+    position: absolute;
+    left: 0;
     width: 100%;
-    background: white;
-    margin: 0px;
-    top: 185px;
-    border: 1px solid lightgrey;
-    border-top: 0px;
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 1s;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    -webkit-transition: max-height 0.4s ease;
+    -moz-transition: max-height 0.4s ease;
+    -o-transition: max-height 0.4s ease;
+    transition: max-height 0.4s ease;
+
+    margin: 0px;
+    padding: 0;
+}
+
+.action-list>li {
+    height: 35px;
+    line-height: 35px;
+    padding: 0px 20px;
+    background-color: #fff;
+}
+.action-list>li>a {
+    display: block;
+    border-bottom: 1px solid #666;
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-section:hover .action-list {
+    max-height: 140px;
+    display: block;
 }
 
 .menu {
@@ -104,11 +130,11 @@ header {
 }
 
 .nav-section.nav-section-dashboard {
-    background-image: url(/img/icons/actions-help.png);
+    background-image: url(/img/icons/action-report-top.png);
 }
 
 .nav-section.nav-section-tutorials {
-    background-image: url(/img/icons/action-report-top.png);
+    background-image: url(/img/icons/actions-help.png);
 }
 
 
@@ -118,7 +144,7 @@ header {
     padding: 15px;
 }
 
-nav li {
+nav > li {
     float: left;
     width: 31%;
     margin-left: 3.5%;
@@ -135,14 +161,21 @@ main {
 
 .tabs {
     margin-top: 40px;
+    overflow: hidden;
 }
-
+.tabs ul {
+    margin: 0px;
+    padding: 0px;
+}
 .tabs li {
     float: left;
     width: 22%;
     margin-left: 4%;
-    height: 50px;
-    background-color: white;
+    height: 40px;
+    background-color: #333;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
 }
 
 .tabs li.active {
@@ -157,7 +190,7 @@ nav li:first-child,
 .tab {
     display: none;
     background-color: white;
-    height: 500px;
+    min-height: 500px;
 }
 
 .tab.active {
@@ -168,3 +201,13 @@ nav li:first-child,
     overflow: hidden;
 }
 
+
+
+.action-list>li:hover {
+    background-color: #eee;
+}
+
+.tabs li a {
+    color: #fff;
+    text-decoration: none;
+}
