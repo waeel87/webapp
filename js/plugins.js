@@ -151,12 +151,14 @@ var UTILS = (function () {
 		window.dispatchEvent(new Event("hashchange"));
 	    });
 
+
+
 	    //load notification by ajax
 	    UTILS.ajax('data/config.json', {
 		done: function (data) {
 		    if (data) {
 			if (data.notification != "") {
-			    $('.notifications').html(data.notification);
+			    $('.notifications').text(data.notification);
 			    $('.notifications').show();
 			    return true;
 			}
