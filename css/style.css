@@ -166,6 +166,8 @@ main {
 .tabs ul {
     margin: 0px;
     padding: 0px;
+    display: table;
+    width: 100%;
 }
 .tabs li {
     float: left;
@@ -190,7 +192,7 @@ nav li:first-child,
 
 .tab {
     display: none;
-    background-color: white;
+    background-color: lightgrey;
     min-height: 500px;
 }
 
@@ -199,7 +201,7 @@ nav li:first-child,
 }
 
 .clearfix {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
@@ -213,3 +215,97 @@ nav li:first-child,
     text-decoration: none;
     display: block;
 }
+.tabs li a.active {
+    background-color: lightgrey;
+    color: #333;
+}
+
+.tab-toolbar {
+    
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0px 2%;
+    display: table;
+}
+
+.tab-toolbar .select-site {
+    
+}
+
+.tab-toolbar a {
+    cursor: pointer;      
+    display: table-cell;
+    float: right;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+}
+.tab-toolbar a.settings-btn {
+    background-color: #fff;
+    
+    margin-right: 1px;
+    box-shadow: 0px -4px 5px rgba(0,0,0,0.6);
+}
+
+.tab-toolbar a.expand-btn {
+    
+}
+
+.settings-form {
+    background: white;      
+    padding: 10px;      
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.6);            
+    
+    margin: 0px 2%;
+}
+.settings-form fieldset {
+    background: #c8c8c8;
+    
+    margin: 10px 1%;
+}
+
+.settings-form fieldset legend {
+    float: left;
+    width: 20%;
+    margin: 5px 0px;
+    padding: 0px 1%;
+    box-sizing: border-box;
+}
+
+.settings-form fieldset .form-group{
+    float: left;
+    width: 40%;
+    margin: 5px 0px;
+    padding: 0px 1%;
+    box-sizing: border-box;
+}
+.settings-form fieldset .form-group input {
+    padding: 5px;
+    margin: 0px 1%;
+    width: 80%;
+}
+
+.settings-form .form-actions {
+    display: table;
+    
+    width: 100%;
+    padding: 0px 1%;
+    box-sizing: border-box;
+}
+.settings-form input[type="submit"] {
+    float: right;      
+    height: 35px;      
+    line-height: 35px;      width: 100px;      background: black;      color: white;      padding: 0;      border: 0;
+    
+}
+
+.settings-form .cancel-btn {
+    cursor: pointer;
+    
+    text-decoration: underline;
+    float: right;
+    margin: 7px 2%;
+}
+
