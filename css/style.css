@@ -169,8 +169,9 @@ main {
 }
 .tabs li {
     float: left;
-    width: 22%;
-    margin-left: 4%;
+    width: 23.5%;
+    margin: 0px;
+    margin-left: 2%;
     height: 40px;
     background-color: #333;
     display: inline-block;
@@ -210,4 +211,5 @@ nav li:first-child,
 .tabs li a {
     color: #fff;
     text-decoration: none;
+    display: block;
 }
