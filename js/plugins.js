@@ -61,6 +61,9 @@ var UTILS = (function () {
 	    }
 	},
 	openTab: function (tabId) {
+	    if (tabId == "") {
+		tabId = '#quick-reports';
+	    }
 	    $tab = $(tabId + ".tab");
 	    $('.tab').removeClass('active');
 	    $('.tabs-actions a').removeClass('active');
@@ -68,6 +71,8 @@ var UTILS = (function () {
 	    $tab.show();
 	    $tab.addClass('active');
 	    $('.tabs-actions a[href="#' + $tab.attr('id') + '"]').addClass('active');
+
+
 
 	},
 	showSettingsForm: function ($form) {
