@@ -9,13 +9,14 @@ and open the template in the editor.
 */
 
 body {
-    background-color: hotpink;
+    background: rgba(0, 0, 0, 0) url("../img/body-background.jpg") no-repeat fixed center center / cover;      
+    /* min-width: 726px; */      margin: 0;
 }
 
 header {
     background-color: black;
-    height: 100px;  
-    line-height: 100px;
+    height: 80px;  
+    line-height: 80px;
 }
 
 .layout-wrap {
@@ -244,12 +245,17 @@ nav li:first-child,
     padding-top: 10px;
 }
 .tab-toolbar a.settings-btn {
-    background-color: #fff;
+    
     
     margin-right: 1px;
-    box-shadow: 0px -4px 5px rgba(0,0,0,0.6);
+    /* box-shadow: 0px -4px 5px rgba(0,0,0,0.6); */
 }
 
+.tab-toolbar a.settings-btn.active,
+.tab-toolbar a.settings-btn:hover
+{
+    background-color: #fff;
+}
 .tab-toolbar a.expand-btn {
     
 }
@@ -286,6 +292,9 @@ nav li:first-child,
     padding: 5px;
     margin: 0px 1%;
     width: 80%;
+}
+.settings-form fieldset .form-group input.inputError {
+    border: 1px solid red;
 }
 
 .settings-form .form-actions {

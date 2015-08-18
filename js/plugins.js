@@ -70,6 +70,152 @@ var UTILS = (function () {
 	    $('.tabs-actions a[href="#' + $tab.attr('id') + '"]').addClass('active');
 
 	},
+	showSettingsForm: function ($form) {
+	    var $tab = $form.parents('.tab')
+	    $form.show();
+	    $('.settings-btn', $tab).addClass('active');
+	    $('iframe', $tab).hide();
+	    $('.expand-btn', $tab).hide();
+	    $('.select-site', $tab).hide();
+	},
+	hideSettingsForm: function ($form) {
+	    var $tab = $form.parents('.tab')
+	    $form.hide();
+	    $('.settings-btn', $tab).removeClass('active');
+	    $('iframe', $tab).show();
+	    $('.expand-btn', $tab).show();
+	    $('.select-site', $tab).show();
+	},
+	toggleSettingsForm: function ($form) {
+	    var $tab = $form.parents('.tab')
+	    $form.toggle();
+	    if ($form.is(':hidden')) {
+		$('.settings-btn', $tab).removeClass('active');
+		$('iframe', $tab).show();
+		$('.expand-btn', $tab).show();
+		$('.select-site', $tab).show();
+	    }
+	    else {
+		$('.settings-btn', $tab).addClass('active');
+		$('iframe', $tab).hide();
+		$('.expand-btn', $tab).hide();
+		$('.select-site', $tab).hide();
+	    }
+	},
+	validURL: function (str) {
+	    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+		    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+		    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+		    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+		    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+		    '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+	    if (!pattern.test(str)) {
+		return false;
+	    } else {
+		return true;
+	    }
+	},
+	validateSettingsForm: function ($form) {
+	    var valid = true;
+	    $form.find('fieldset').each(function (index) {
+		var $nameInput = $(this).find('input[type="text"]');
+		var $urlInput = $(this).find('input[type="url"]');
+		$nameInput.removeClass('inputError');
+		$urlInput.removeClass('inputError');
+
+		if ($nameInput.val() !== '' && ($urlInput.val() === '' || !UTILS.validURL($urlInput.val()))) {
+		    $urlInput.addClass('inputError');
+		    valid = false;
+		}
+
+		if ($nameInput.val() === '' && $urlInput.val() !== '') {
+		    $nameInput.addClass('inputError');
+		    valid = false;
+		}
+
+	    });
+
+	    $form.find('.inputError:first').focus();
+	    return valid;
+	},
+	saveSettingsForm: function ($form) {
+	    var arr = [];
+	    var id = $form.parents('.tab').attr('id');
+	    $form.find('fieldset').each(function (index) {
+		var $nameInput = $(this).find('input[type="text"]');
+		var $urlInput = $(this).find('input[type="url"]');
+
+		if ($nameInput.val() !== '' && $urlInput.val() !== '' && UTILS.validURL($urlInput.val())) {
+
+		    url = $urlInput.val();
+
+		    var pattern = new RegExp('^(https?:\\/\\/)', 'i'); // fragment locator
+		    if (!pattern.test(url)) {
+			url = "http://" + url;
+		    }
+
+
+		    arr.push({
+			name: $nameInput.val(),
+			url: url,
+		    });
+		}
+	    });
+	    localStorage.setItem('settingsForm' + id, JSON.stringify(arr));
+	},
+	loadIframe: function ($tab, url) {
+	    var id = $tab.attr('id');
+
+	    if (!url) {
+		var jsonStr = localStorage.getItem('settingsForm' + id);
+		if (jsonStr) {
+		    var settings = JSON.parse(jsonStr);
+		    for (var index in settings) {
+			url = settings[index].url;
+		    }
+		}
+	    }
+
+	    $('iframe', $tab).attr('src', url);
+	    $('iframe', $tab).show();
+	    $('.expand-btn', $tab).attr('href', url);
+	    $('.expand-btn', $tab).show();
+
+	    var $form = $('.settings-form', $tab);
+	    $form.hide();
+	    $('.settings-btn', $tab).removeClass('active');
+
+	},
+	loadSettingsForm: function ($form) {
+	    var $tab = $form.parents('.tab');
+	    var id = $form.parents('.tab').attr('id');
+	    var jsonStr = localStorage.getItem('settingsForm' + id);
+	    var $select = $('.select-site', $tab);
+	    if (jsonStr) {
+		var settings = JSON.parse(jsonStr);
+		if (settings && settings.length > 0) {
+		    $select.html('');
+		    var name;
+		    var url;
+		    for (var index in settings) {
+			name = settings[index].name;
+			url = settings[index].url;
+			$('input[type="text"]', $form).eq(index).val(name);
+			$('input[type="url"]', $form).eq(index).val(url);
+			$select.append('<option value="' + url + '">' + name + '</option>')
+		    }
+		    $select.val(url);
+		    $select.show();
+		    UTILS.loadIframe($tab, url);
+		}
+		else {
+		    UTILS.showSettingsForm($form);
+		}
+	    }
+	    else {
+		UTILS.showSettingsForm($form);
+	    }
+	},
 	ajax: function (url, options) {
 	    var xhr = new XMLHttpRequest(),
 		    method = 'GET',
@@ -162,9 +308,41 @@ var UTILS = (function () {
 			    $('.notifications').show();
 			    return true;
 			}
-		    }    
+		    }
 		}
 	    });
+
+	    $('.settings-btn').click(function () {
+		var $form = $(this).parents('.tab').find('.settings-form');
+		UTILS.toggleSettingsForm($form);
+	    });
+
+	    $('.cancel-btn').click(function () {
+		var $form = $(this).parents('.tab').find('.settings-form');
+		UTILS.hideSettingsForm($form);
+	    });
+
+	    $('.settings-form').submit(function (e) {
+		var $tab = $(this).parents('.tab');
+		var $form = $('.settings-form', $tab);
+		if (UTILS.validateSettingsForm($form)) {
+		    UTILS.saveSettingsForm($form);
+		    UTILS.loadSettingsForm($form);
+
+		}
+		return false;
+	    });
+
+	    $('.settings-form').each(function () {
+		UTILS.loadSettingsForm($(this));
+	    });
+
+
+	    $('.select-site').change(function () {
+		var $tab = $(this).parents('.tab');
+		UTILS.loadIframe($tab, $(this).val());
+	    });
+
 	}
 
     };
